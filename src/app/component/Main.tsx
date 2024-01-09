@@ -31,7 +31,9 @@ export default function Main() {
     __v: Number;
   };
 
+  const [toggle, setToggle] = useState<Boolean>(false);
   const [items, setItems] = useState<tProduct[]>();
+  const [singleItem, setsingleItem] = useState<tProduct>();
 
   const handleRequest = async () => {
     const response: any = await axios.get("api/getProducts");
@@ -41,6 +43,19 @@ export default function Main() {
     const data = response.data.result;
     setItems(data);
   };
+
+  async function handleToggle(Id: Number) {
+    const response: any = await axios.post("api/getProducts", Id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = response.data.result;
+    setsingleItem(data);
+
+    setTimeout(() => {setToggle(true)}, 2000);
+  }
 
   useEffect(() => {
     return () => {
@@ -64,14 +79,14 @@ export default function Main() {
           {items?.map((item, i) => {
             return (
               <div key={i} className="">
-                <ListAllProduct item={item} />
+                <ListAllProduct item={item} handleToggle={handleToggle} />
               </div>
             );
           })}
         </div>
 
-        <div className="d- p-3 col" id="magicol">
-          <Product />
+        <div className={`d-block p-3 col`} id="magicol">
+          <Product singleItem={singleItem} />
         </div>
       </div>
     </main>

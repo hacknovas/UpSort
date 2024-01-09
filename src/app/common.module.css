@@ -1,3 +1,44 @@
-.productImage:hover {
-    
+.productLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* column-gap: ; */
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.productName {
+  /* position: absolute; */
+  text-align: right;
+  width: 100%;
+  font-size: x-small;
+}
+
+.imageText {
+  position: absolute;
+  visibility: hidden;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  /* transition: visibility ; */
+  transition-delay: 0.2s;
+}
+
+.productImage {
+  display: block;
+  position: relative;
+
+  transition: opacity 2s;
+
+  /* position: absolute; */
+}
+
+.productLayout:hover .productImage {
+  opacity: 0.5;
+
+  /* transition: ; */
+}
+
+.productLayout:hover .imageText {
+  visibility: visible;
 }
