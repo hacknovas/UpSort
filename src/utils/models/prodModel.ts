@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-const scrapData = require("../scrapping/extractData");
 
 interface Products extends mongoose.Document {
   Product_Name: String;
@@ -80,29 +79,28 @@ const struct = new mongoose.Schema<Products, ProductModel>({
   },
 });
 
-struct.method("getDetailFrom", async function () {
-  try {
-    const res1 = await scrapData(this.Links.Amazon, 1);
-    this.Prices.AmazonP = await res1.Price;
-    this.Ratings.AmazonP = await res1.Rating;
-    this.Images.AmazonP = await res1.Image;
+// struct.method("getDetailFrom", async function () {
+//   try {
+//     const res1 = await scrapData(this.Links.Amazon, 1);
+//     this.Prices.AmazonP = await res1.Price;
+//     this.Ratings.AmazonP = await res1.Rating;
+//     this.Images.AmazonP = await res1.Image;
 
-    const res2 = await scrapData(this.Links.Flipkart, 2);
-    this.Prices.FlipkartP = await res2.Price;
-    this.Ratings.FlipkartP = await res2.Rating;
+//     const res2 = await scrapData(this.Links.Flipkart, 2);
+//     this.Prices.FlipkartP = await res2.Price;
+//     this.Ratings.FlipkartP = await res2.Rating;
 
-    await this.save();
-    return this;
-  } catch (err) {
-    console.log("Failed to extract data...");
-  }
-});
+//     await this.save();
+//     return this;
+//   } catch (err) {
+//     console.log("Failed to extract data...");
+//   }
+// });
 
 // type prod = InferSchemaType<typeof schema>;
 
-const modelProd: ProductModel = mongoose.model<Products, ProductModel>(
-  "allProducts",
-  struct
-);
+export const modelProd: ProductModel =
+  mongoose.models.AllProducts ??
+  mongoose.model<Products, ProductModel>("AllProducts", struct);
 
-module.exports = modelProd;
+// module.exports = mongoose.models.AllProducts || modelProd;

@@ -1,19 +1,57 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Product from "./Product";
 import ListAllProduct from "./ListAllProduct";
+import axios from "axios";
 
 export default function Main() {
-  const handleRequest = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  type tProduct = {
+    Links: {
+      Amazon: String;
+      Flipkart: String;
+    };
+    Prices: {
+      AmazonP: Number;
+      FlipkartP: Number;
+    };
+    Ratings: {
+      AmazonP: Number;
+      FlipkartP: Number;
+    };
+    Images: {
+      AmazonP: String;
+    };
+    Category: {
+      Mobile: Boolean;
+      Electronics: Boolean;
+      Fashion: Boolean;
+    };
+    _id: String;
+    Product_Name: String;
+    __v: Number;
   };
 
-  const [items, setItems] = useState([123, 2321]);
+  const [items, setItems] = useState<tProduct[]>();
+
+  const handleRequest = async () => {
+    const response: any = await axios.get("api/getProducts");
+
+    // const data= await JSON.stringify(response.data.reslut)
+    // console.log(response.data.result);
+    const data = response.data.result;
+    setItems(data);
+  };
+
+  useEffect(() => {
+    return () => {
+      handleRequest();
+    };
+  }, []);
 
   return (
     <main className="d-flex flex-column">
       <div className="text-center">
-        <form onSubmit={handleRequest}>
+        <form>
           <input type="text" name="itemSearch" />
           <input type="submit" value="submit" />
         </form>
@@ -23,10 +61,10 @@ export default function Main() {
 
       <div className="row ">
         <div className="col d-flex justify-content-evenly p-3">
-          {items.map((val, i) => {
+          {items?.map((item, i) => {
             return (
               <div key={i} className="">
-                <ListAllProduct />
+                <ListAllProduct item={item} />
               </div>
             );
           })}

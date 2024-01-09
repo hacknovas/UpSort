@@ -4,7 +4,7 @@ declare global {
   var mongoose: any;
 }
 
-const MongoURI: string | undefined = process.env.MONGODB_URL;
+const MongoURI: string | undefined = process.env.NEXT_PUBLIC_MONGODB_URL;
 
 if (!MongoURI) {
   throw new Error("Undefined MONGOURI...");
@@ -16,8 +16,12 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-async function getConnectDB() {
+(async function getConnectDB() {
+  console.log("Trying to connect to DB");
+
   if (cached.conn) {
+    console.log("Connected to DB using Cache...");
+
     return cached.conn;
   }
 
@@ -37,8 +41,10 @@ async function getConnectDB() {
 
       throw error;
     }
+
+    console.log("Connected to DB");
     return cached.conn;
   }
-}
+})();
 
-export default getConnectDB;
+// export default getConnectDB;
