@@ -54,7 +54,9 @@ export default function Main() {
     const data = response.data.result;
     setsingleItem(data);
 
-    setTimeout(() => {setToggle(true)}, 2000);
+    setTimeout(() => {
+      setToggle(true);
+    }, 2000);
   }
 
   useEffect(() => {
@@ -85,9 +87,13 @@ export default function Main() {
           })}
         </div>
 
-        <div className={`d-block p-3 col`} id="magicol">
-          <Product singleItem={singleItem} />
-        </div>
+        {!toggle ? (
+          <div></div>
+        ) : (
+          <div className="p-3 col" id="magicol">
+            <Product singleItem={singleItem} />
+          </div>
+        )}
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ export default function Product({ ...props }) {
   return (
     <div>
       <div className="card text-center shadow-lg">
-        <div className="text-center pt-3">
+        <div className="text-center p-3">
           <Image
             src={props.singleItem?.Images.AmazonP}
             width={300}

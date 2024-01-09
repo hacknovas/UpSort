@@ -10,8 +10,9 @@ export default function Home() {
         {/* <div>Items</div> */}
       </nav>
       <header className="container text-center">Info</header>
-
-      <Main />
+      <div>
+        <Main />
+      </div>
 
       <footer className="d-flex justify-content-center">footer</footer>
     </>
