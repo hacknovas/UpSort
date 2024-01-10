@@ -77,7 +77,7 @@ export default function Main() {
       <h1 className="text-center">grid Items</h1>
 
       <div className="row ">
-        <div className="col d-flex justify-content-evenly p-3">
+        <div className="container col d-flex justify-content-evenly align-item-center flex-wrap p-3">
           {items?.map((item, i) => {
             return (
               <div key={i} className="">
@@ -90,7 +90,15 @@ export default function Main() {
         {!toggle ? (
           <div></div>
         ) : (
-          <div className="p-3 col" id="magicol">
+          <div className="p-3 col " id="magicol">
+            <div
+              className="text-end "
+              onClick={() => {
+                setToggle(false);
+              }}
+            >
+              Close
+            </div>
             <Product singleItem={singleItem} />
           </div>
         )}
