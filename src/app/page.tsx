@@ -1,6 +1,8 @@
 // "use client";
 import Image from "next/image";
 import Main from "./component/Main";
+import img1 from "../../public/img1.jpg";
+import img2 from "../../public/img2.jpg";
 
 export default function Home() {
   return (
@@ -19,16 +21,68 @@ export default function Home() {
           </h4>
         </a>
       </nav>
-      <header className="container text-center">Info</header>
 
-      <div className="bg-light my-4">
+      <header className="">
+        {/*  */}
+        <div style={{ paddingBottom: "4px" }}>
+          <div className="m-5 p-3">
+            <h3 className="text-center text-secondary p-4">
+              Welcome to our website dedicated to product comparison<br></br>{" "}
+              through advanced web Scraping!
+            </h3>
+            <div className="d-flex m-2" style={{ justifyContent: "flex-end" }}>
+              <p className="m-2 p-3 text-end" style={{ fontSize: "0.9rem" }}>
+                We're here to simplify your decision-making process by gathering{" "}
+                <br></br>real-time data from various online sources.
+              </p>
+
+              <Image
+                src={img1}
+                alt="Na"
+                style={{
+                  borderRadius: "4%",
+                  boxShadow: "10px 20px grey",
+                  width: "20vw",
+                }}
+                className="img-fluid"
+              ></Image>
+            </div>
+
+            <div
+              className="d-flex m-2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              <Image
+                src={img2}
+                alt="NA"
+                style={{
+                  borderRadius: "4%",
+                  boxShadow: "10px 20px grey",
+                  width: "20vw",
+                }}
+              ></Image>
+
+              <p className="m-2 p-3" style={{ fontSize: "0.9rem" }}>
+                Our platform provides unbiased and up-to-date comparisons of
+                products across different brands categories.<br></br> Whether
+                you're looking for electronics,appliances, fashion,<br></br> or
+                more, we've got you covered.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/*  */}
+      </header>
+
+      <div className="m-4 bg-light  my-5">
         <Main />
       </div>
 
       <div className="d-flex justify-content-evenly align-item-center my-5">
         <div>
           <h2>
-            Don't see <br /> products?
+            Don't See <br /> Product?
           </h2>
         </div>
         <div>
@@ -55,6 +109,17 @@ export default function Home() {
           </form>
         </div>
       </div>
+
+      <hr></hr>
+
+      <p
+        className="text-center p-5"
+        style={{ fontSize: "0.8rem", fontWeight: "bolder" }}
+      >
+       <h5> Say goodbye to endless searching and hello to informed choices. <br /> Explore
+        our comprehensive comparisons and make smarter shopping decisions
+        today..!</h5>
+      </p>
 
       <footer
         className=" border-top p-3 text-light"

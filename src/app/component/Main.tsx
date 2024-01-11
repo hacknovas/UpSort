@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Product from "./Product";
 import ListAllProduct from "./ListAllProduct";
 import axios from "axios";
+import styles from "@/app/common.module.css"
 
 export default function Main() {
   type tProduct = {
@@ -66,7 +67,7 @@ export default function Main() {
   }, []);
 
   return (
-    <main className="d-flex flex-column">
+    <main className="d-flex flex-column p-2 ">
       <div className="d-flex justify-content-between p-3 ">
         <div className="p-3">
           <select
@@ -106,7 +107,11 @@ export default function Main() {
         </form>
       </div>
       <div className="row ">
-        <div className="col-8 d-flex justify-content-evenly align-items-center flex-wrap p-3">
+        <div
+          className="col scrollHide d-flex justify-content-evenly align-items-center flex-wrap p-3"
+          style={{ maxHeight: "100vh", overflowY: "scroll" }}
+          
+        >
           {items?.map((item, i) => {
             return (
               <div key={i} className="p-3">
@@ -119,7 +124,11 @@ export default function Main() {
         {!toggle ? (
           <div></div>
         ) : (
-          <div className="p-3 col-4 d-flex align-items-center" id="magicol">
+          <div
+            className="p-3 col-4 d-flex align-items-center justify-content-center"
+            // style={{ position: "absolute" }}
+            id="magicol"
+          >
             <Product singleItem={singleItem} setToggle={setToggle} />
           </div>
         )}
