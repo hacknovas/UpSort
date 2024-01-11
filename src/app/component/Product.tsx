@@ -6,6 +6,17 @@ export default function Product({ ...props }) {
   return (
     <div>
       <div className="card text-center shadow-lg">
+        <div
+          className="text-end"
+          onClick={() => {
+            props.setToggle(false);
+          }}
+          style={{ cursor: "pointer" }}
+        >
+          <h5 className="text-end p-2">
+            <b className="text-secondary  p-2">&times;</b>
+          </h5>
+        </div>
         <div className="text-center p-3">
           <Image
             src={props.singleItem?.Images.AmazonP}
@@ -16,10 +27,6 @@ export default function Product({ ...props }) {
         </div>
         <div className="card-body">
           <h5 className="card-title">{props.singleItem?.Product_Name}</h5>
-          {/* <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p> */}
         </div>
         <ul className="list-group list-group-flush ">
           <li className="list-group-item d-flex justify-content-evenly">
@@ -36,7 +43,6 @@ export default function Product({ ...props }) {
               Flipkart
             </a>
           </li>
-          {/* <li className="list-group-item">A third item</li> */}
         </ul>
         <div className="card-body">{/*  */}</div>
       </div>

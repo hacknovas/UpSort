@@ -67,20 +67,49 @@ export default function Main() {
 
   return (
     <main className="d-flex flex-column">
-      <div className="text-center">
-        <form>
-          <input type="text" name="itemSearch" />
-          <input type="submit" value="submit" />
+      <div className="d-flex justify-content-between p-3 ">
+        <div className="p-3">
+          <select
+            name="category"
+            id=""
+            style={{ border: "none", padding: "4px", borderRadius: "10px" }}
+            className="shadow-sm "
+          >
+            <option value="" selected>
+              Category
+            </option>
+            <option value="">Mobile</option>
+            <option value="">Fashion</option>
+            <option value="">Electronics</option>
+          </select>
+        </div>
+        <form
+          style={{ padding: "4px", borderRadius: "10px" }}
+          className="d-flex"
+        >
+          <div className="p-2">
+            <input
+              type="text"
+              name="itemSearch"
+              placeholder="search product..."
+              className="form-control"
+            />
+          </div>
+          <div className="p-2">
+            <input
+              type="submit"
+              value="submit"
+              className="btn btn-light  "
+              style={{ borderRadius: "10px", padding: "4px" }}
+            />
+          </div>
         </form>
       </div>
-
-      <h1 className="text-center">grid Items</h1>
-
       <div className="row ">
-        <div className="container col d-flex justify-content-evenly align-item-center flex-wrap p-3">
+        <div className="col-8 d-flex justify-content-evenly align-items-center flex-wrap p-3">
           {items?.map((item, i) => {
             return (
-              <div key={i} className="">
+              <div key={i} className="p-3">
                 <ListAllProduct item={item} handleToggle={handleToggle} />
               </div>
             );
@@ -90,16 +119,8 @@ export default function Main() {
         {!toggle ? (
           <div></div>
         ) : (
-          <div className="p-3 col " id="magicol">
-            <div
-              className="text-end "
-              onClick={() => {
-                setToggle(false);
-              }}
-            >
-              Close
-            </div>
-            <Product singleItem={singleItem} />
+          <div className="p-3 col-4 d-flex align-items-center" id="magicol">
+            <Product singleItem={singleItem} setToggle={setToggle} />
           </div>
         )}
       </div>

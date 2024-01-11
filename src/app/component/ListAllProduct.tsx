@@ -6,6 +6,8 @@ export default function ListAllProduct({ ...item }) {
     <>
       <div
         className={styles.productLayout}
+        style={{cursor:"pointer"}}
+        
         onClick={() => {
           item.handleToggle(item.item._id);
         }}
@@ -17,7 +19,7 @@ export default function ListAllProduct({ ...item }) {
           <Image
             src={item.item.Images.AmazonP}
             alt="NA"
-            width={175}
+            width={150}
             height={220}
           ></Image>
         </div>
