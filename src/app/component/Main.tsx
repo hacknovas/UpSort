@@ -57,7 +57,7 @@ export default function Main() {
 
     setTimeout(() => {
       setToggle(true);
-    }, 2000);
+    }, 1000);
   }
 
   useEffect(() => {
@@ -99,7 +99,7 @@ export default function Main() {
           <div className="p-2">
             <input
               type="submit"
-              value="submit"
+              value="Search"
               className="btn btn-light  "
               style={{ borderRadius: "10px", padding: "4px" }}
             />

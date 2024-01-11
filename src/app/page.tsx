@@ -30,7 +30,7 @@ export default function Home() {
               Welcome to our website dedicated to product comparison<br></br>{" "}
               through advanced web Scraping!
             </h3>
-            <div className="d-flex m-2" style={{ justifyContent: "flex-end" }}>
+            <div className="d-flex p-3" style={{ justifyContent: "flex-end" }}>
               <p className="m-2 p-3 text-end" style={{ fontSize: "0.9rem" }}>
                 We're here to simplify your decision-making process by gathering{" "}
                 <br></br>real-time data from various online sources.
@@ -49,7 +49,7 @@ export default function Home() {
             </div>
 
             <div
-              className="d-flex m-2"
+              className="d-flex p-3"
               style={{ justifyContent: "flex-start" }}
             >
               <Image
@@ -112,9 +112,9 @@ export default function Home() {
 
       <hr></hr>
 
-      <p
+      <div
         className="text-center p-5"
-        style={{ fontSize: "0.8rem", fontWeight: "bolder" }}
+        style={{ fontSize: "0.8rem", fontWeight: "bolder", color: "grey" }}
       >
         <h5>
           {" "}
@@ -122,7 +122,7 @@ export default function Home() {
           Explore our comprehensive comparisons and make smarter shopping
           decisions today..!
         </h5>
-      </p>
+      </div>
 
       <footer
         className=" border-top p-3 text-light"
