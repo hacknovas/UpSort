@@ -38,7 +38,7 @@ export default function Home() {
 
               <Image
                 src={img1}
-                alt="Na"
+                alt="NA"
                 style={{
                   borderRadius: "4%",
                   boxShadow: "10px 20px grey",
