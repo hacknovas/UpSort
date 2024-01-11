@@ -116,9 +116,12 @@ export default function Home() {
         className="text-center p-5"
         style={{ fontSize: "0.8rem", fontWeight: "bolder" }}
       >
-       <h5> Say goodbye to endless searching and hello to informed choices. <br /> Explore
-        our comprehensive comparisons and make smarter shopping decisions
-        today..!</h5>
+        <h5>
+          {" "}
+          Say goodbye to endless searching and hello to informed choices. <br />{" "}
+          Explore our comprehensive comparisons and make smarter shopping
+          decisions today..!
+        </h5>
       </p>
 
       <footer
