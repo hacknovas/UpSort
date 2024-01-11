@@ -3,7 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Product from "./Product";
 import ListAllProduct from "./ListAllProduct";
 import axios from "axios";
-import styles from "@/app/common.module.css"
+import styles from "@/app/common.module.css";
 
 export default function Main() {
   type tProduct = {
@@ -110,7 +110,6 @@ export default function Main() {
         <div
           className="col scrollHide d-flex justify-content-evenly align-items-center flex-wrap p-3"
           style={{ maxHeight: "100vh", overflowY: "scroll" }}
-          
         >
           {items?.map((item, i) => {
             return (
