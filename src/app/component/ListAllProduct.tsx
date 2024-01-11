@@ -6,8 +6,7 @@ export default function ListAllProduct({ ...item }) {
     <>
       <div
         className={styles.productLayout}
-        style={{cursor:"pointer"}}
-        
+        style={{ cursor: "pointer" }}
         onClick={() => {
           item.handleToggle(item.item._id);
         }}
