@@ -3,23 +3,45 @@ import Image from "next/image";
 import Main from "./component/Main";
 import img1 from "../../public/img1.jpg";
 import img2 from "../../public/img2.jpg";
+import logo from "../../public/logo.jpg";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <nav className="p-2 my-1 position-sticky top-0 z-1  d-flex justify-content-center shadow">
-        <a
+      <nav
+        className="p-2 my-1 position-sticky top-0 z-1  d-flex justify-content-between shadow"
+        style={{
+          backgroundColor: "whitesmoke",
+        }}
+      >
+        <Image
+          src={logo}
+          alt="NA"
+          width={40}
+          style={{ filter: "invert(0%)" }}
+        ></Image>
+        <Link
           href="/"
           style={{
             textDecoration: "none",
-            color: "black",
+            color: "darkgray",
             fontWeight: "bolder",
           }}
         >
           <h4>
             <b>UpSort</b>
           </h4>
-        </a>
+        </Link>
+
+        <div>
+          <Link
+            href="#searchItem"
+            style={{ textDecoration: "none", color: "grey" }}
+          >
+            Search Here <b>&darr;</b>
+          </Link>
+        </div>
       </nav>
 
       <header className="">
@@ -75,11 +97,14 @@ export default function Home() {
         {/*  */}
       </header>
 
-      <div className="m-4 bg-light  my-5">
+      <div
+        className="m-4 bg-light border-top border-bottom  my-5"
+        id="searchItem"
+      >
         <Main />
       </div>
 
-      <div className="d-flex justify-content-evenly align-item-center my-5">
+      <div className="d-flex justify-content-evenly align-item-center my-5 pt-5">
         <div>
           <h2>
             Don't See <br /> Product?
@@ -114,7 +139,7 @@ export default function Home() {
 
       <div
         className="text-center p-5"
-        style={{ fontSize: "0.8rem", fontWeight: "bolder", color: "grey" }}
+        style={{ fontSize: "0.8rem", fontWeight: "bolder", color: "" }}
       >
         <h5>
           {" "}
@@ -126,10 +151,18 @@ export default function Home() {
 
       <footer
         className=" border-top p-3 text-light"
-        style={{ backgroundColor: "darkgrey" }}
+        style={{ backgroundColor: "black" }}
       >
-        <div className="d-flex justify-content-between p-3">
-          <div>UpSort</div>
+        <div className="d-flex justify-content-between p-3 ">
+          <div>
+            <Image
+              src={logo}
+              width={50}
+              alt="NA"
+              style={{ filter: "invert(100%)" }}
+            ></Image>
+            <b>UpSort</b>
+          </div>
           <div>
             <b>Products</b>
             <ul style={{ listStyleType: "none" }}>
