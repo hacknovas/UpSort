@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import Product from "./Product";
 import ListAllProduct from "./ListAllProduct";
 import axios from "axios";
@@ -76,6 +76,13 @@ export default function Main() {
     setToggle(false);
   };
 
+  const getCategoryProduct = async (category: String) => {
+    const response: any = await axios.get(`api/searchProduct?data=${category}`);
+
+    const data = response.data.result;
+    setItems(data);
+  };
+
   useEffect(() => {
     return () => {
       handleRequest();
@@ -91,13 +98,16 @@ export default function Main() {
             id=""
             style={{ border: "none", padding: "4px", borderRadius: "10px" }}
             className="shadow-sm "
+            onChange={(e) => {
+              getCategoryProduct(e.target.value);
+            }}
           >
             <option value="" selected>
               Category
             </option>
-            <option value="">Mobile</option>
-            <option value="">Fashion</option>
-            <option value="">Electronics</option>
+            <option value="Mobile">Mobile</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Electronics">Electronics</option>
           </select>
         </div>
         <form
