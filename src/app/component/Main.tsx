@@ -1,9 +1,8 @@
 "use client";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Product from "./Product";
 import ListAllProduct from "./ListAllProduct";
 import axios from "axios";
-import styles from "@/app/common.module.css";
 
 export default function Main() {
   type tProduct = {
@@ -35,15 +34,8 @@ export default function Main() {
   const [toggle, setToggle] = useState<Boolean>(false);
   const [items, setItems] = useState<tProduct[]>();
   const [singleItem, setsingleItem] = useState<tProduct>();
-
-  const handleRequest = async () => {
-    const response: any = await axios.get("api/getProducts");
-
-    // const data= await JSON.stringify(response.data.reslut)
-    // console.log(response.data.result);
-    const data = response.data.result;
-    setItems(data);
-  };
+  const [searchQuery, setsearchQuery] = useState("");
+  const [searchActivate, setSearchActivate] = useState(false);
 
   async function handleToggle(Id: Number) {
     const response: any = await axios.post("api/getProducts", Id, {
@@ -59,6 +51,30 @@ export default function Main() {
       setToggle(true);
     }, 1000);
   }
+
+  const handleRequest = async () => {
+    const response: any = await axios.get("api/getProducts");
+
+    // const data= await JSON.stringify(response.data.reslut)
+    // console.log(response.data.result);
+    const data = response.data.result;
+    setItems(data);
+  };
+
+  const handleSearch = async () => {
+    console.log(searchQuery);
+
+    const res = await axios.post("api/searchProduct", searchQuery, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // console.log(res.data.result);
+    setItems(res.data.result);
+    setSearchActivate(true);
+    setToggle(false);
+  };
 
   useEffect(() => {
     return () => {
@@ -94,14 +110,17 @@ export default function Main() {
               name="itemSearch"
               placeholder="search product..."
               className="form-control"
+              onChange={(e) => {
+                setsearchQuery(e.target.value);
+              }}
             />
           </div>
           <div className="p-2">
             <input
-              type="submit"
+              type="button"
               value="Search"
-              className="btn btn-light  "
               style={{ borderRadius: "10px", padding: "4px" }}
+              onClick={handleSearch}
             />
           </div>
         </form>
@@ -111,6 +130,11 @@ export default function Main() {
           className="col scrollHide d-flex justify-content-evenly align-items-center flex-wrap p-3"
           style={{ maxHeight: "100vh", overflowY: "scroll" }}
         >
+          {searchActivate ? (
+            <div className="w-100">Search Results:</div>
+          ) : (
+            <div className="w-100">All Products:</div>
+          )}
           {items?.map((item, i) => {
             return (
               <div key={i} className="p-3">

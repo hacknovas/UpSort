@@ -3,24 +3,14 @@ import Image from "next/image";
 import Main from "./component/Main";
 import img1 from "../../public/img1.jpg";
 import img2 from "../../public/img2.jpg";
-import logo from "../../public/logo.jpg";
+import logo from "../../public/logo.png";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <nav
-        className="p-2 my-1 position-sticky top-0 z-1  d-flex justify-content-between shadow"
-        style={{
-          backgroundColor: "whitesmoke",
-        }}
-      >
-        <Image
-          src={logo}
-          alt="NA"
-          width={40}
-          style={{ filter: "invert(0%)" }}
-        ></Image>
+      <nav className="p-2 my-1 position-sticky top-0 z-1  d-flex justify-content-between align-items-center shadow">
+        <Image src={logo} alt="NA" width={40}></Image>
         <Link
           href="/"
           style={{
