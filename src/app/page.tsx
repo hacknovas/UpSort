@@ -101,24 +101,21 @@ export default function Home() {
           </h2>
         </div>
         <div>
-          <form action="" className="p-3">
+          <form className="p-3">
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
+              <label htmlFor="prodrequest1" className="form-label">
                 Product Name
               </label>
-              <input
-                type="text"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
+              <input type="text" className="form-control" id="prodrequest1" />
               <div id="emailHelp" className="form-text">
                 We'll update product as soon as possible.
               </div>
               <div>
-                <button type="submit" className=" my-3 btn btn-primary">
-                  Submit
-                </button>
+                <input
+                  type="submit"
+                  value="Submit"
+                  className=" my-3 btn btn-primary"
+                />
               </div>
             </div>
           </form>
@@ -169,7 +166,7 @@ export default function Home() {
             href="mailto:creatives.doni@gmail.com"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <b>build by @creatives.doni@gmail.com</b>
+            <b>build by creatives.doni@gmail.com</b>
           </a>
         </div>
       </footer>
