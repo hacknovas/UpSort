@@ -56,7 +56,7 @@ export default function Main() {
     const response: any = await axios.get("api/getProducts");
 
     // const data= await JSON.stringify(response.data.reslut)
-    // console.log(response.data.result);
+    console.log(response.data.result);
     const data = response.data.result;
     setItems(data);
   };
@@ -102,9 +102,7 @@ export default function Main() {
               getCategoryProduct(e.target.value);
             }}
           >
-            <option value="" selected>
-              Category
-            </option>
+            <option value="">Category</option>
             <option value="Mobile">Mobile</option>
             <option value="Fashion">Fashion</option>
             <option value="Electronics">Electronics</option>
