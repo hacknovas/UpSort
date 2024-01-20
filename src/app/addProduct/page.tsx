@@ -1,8 +1,8 @@
 "use client";
 import axios from "axios";
-import * as cheerio from "cheerio";
-import { log } from "console";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { redirect } from "next/navigation";
 
 export default function page() {
   const [name, setName] = useState("");
@@ -29,6 +29,12 @@ export default function page() {
       console.log("error occured", error);
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("isAdmin") != "True") {
+      redirect("/verifyAdmin");
+    }
+  }, []);
 
   return (
     <div className="d-flex justify-content-center align-items-center ">
