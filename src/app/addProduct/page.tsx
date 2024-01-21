@@ -30,12 +30,6 @@ export default function page() {
     }
   }
 
-  useEffect(() => {
-    if (localStorage.getItem("isAdmin") != "True") {
-      redirect("/verifyAdmin");
-    }
-  }, []);
-
   return (
     <div className="d-flex justify-content-center align-items-center ">
       <div className="bg-light shadow p-3   ">

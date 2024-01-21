@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { redirect } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function page() {
   const [email, setemail] = useState<string>();
@@ -19,9 +19,12 @@ export default function page() {
         }
       );
 
-      if (res.status == 200) {
-        localStorage.setItem("isAdmin", "true");
-        redirect("/addProducts");
+      console.log("response", res.status);
+
+      if (res.data.status == 200) {
+        redirect("/addProduct");
+      } else {
+        throw new Error(res.data.status);
       }
     } catch (error) {
       console.log(error);
