@@ -19,7 +19,7 @@ export default function page() {
         }
       );
 
-      if (res.data.access == 200) {
+      if (res.status == 200) {
         localStorage.setItem("isAdmin", "true");
         redirect("/addProducts");
       }
