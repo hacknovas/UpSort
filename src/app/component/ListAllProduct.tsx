@@ -4,6 +4,20 @@ import styles from "@/app/common.module.css";
 export default function ListAllProduct({ ...item }) {
   return (
     <>
+      {document.cookie ? (
+        <div
+          style={{ cursor: "pointer" }}
+          className="text-end"
+          onClick={() => {
+            item.handleDelete(item.item._id);
+          }}
+        >
+          &#10060;
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div
         className={styles.productLayout}
         style={{ cursor: "pointer" }}

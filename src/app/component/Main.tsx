@@ -83,6 +83,19 @@ export default function Main() {
     setItems(data);
   };
 
+  const handleDelete = async (id: String) => {
+    try {
+      const response: any = await axios.delete(`api/deleteProduct?data=${id}`);
+
+      handleRequest();
+    } catch (error) {
+      console.log(error);
+    }
+
+    // const data = response.data.result;
+    // setItems(data);
+  };
+
   useEffect(() => {
     return () => {
       handleRequest();
@@ -146,7 +159,11 @@ export default function Main() {
           {items?.map((item, i) => {
             return (
               <div key={i} className="p-3">
-                <ListAllProduct item={item} handleToggle={handleToggle} />
+                <ListAllProduct
+                  item={item}
+                  handleToggle={handleToggle}
+                  handleDelete={handleDelete}
+                />
               </div>
             );
           })}

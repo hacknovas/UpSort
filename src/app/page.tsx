@@ -141,7 +141,7 @@ export default function Home() {
         className=" border-top p-3 text-light"
         style={{ backgroundColor: "black" }}
       >
-        <div className="d-flex justify-content-between p-3 ">
+        <div className="d-flex justify-content-around p-3 ">
           <div>
             <Image
               src={logo}
@@ -151,12 +151,28 @@ export default function Home() {
             ></Image>
             <b>UpSort</b>
           </div>
+
           <div>
             <b>Products</b>
             <ul style={{ listStyleType: "none" }}>
               <li>Mobile</li>
               <li>Electronics</li>
               <li>Fashion</li>
+              <li></li>
+            </ul>
+          </div>
+
+          <div>
+            <b className="text-light">Admin</b>
+            <ul style={{ listStyleType: "none" }}>
+              <li>
+                <Link
+                  href="/verifyAdmin"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Manage Product
+                </Link>
+              </li>
               <li></li>
             </ul>
           </div>

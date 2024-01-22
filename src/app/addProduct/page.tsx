@@ -1,8 +1,8 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { redirect } from "next/navigation";
 
 export default function page() {
   const [name, setName] = useState("");
@@ -31,7 +31,7 @@ export default function page() {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center ">
+    <div className="container d-flex justify-content-evenly m-5">
       <div className="bg-light shadow p-3   ">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -89,6 +89,17 @@ export default function page() {
             Submit
           </button>
         </div>
+      </div>
+      <div className="">
+        <Link
+          href="/"
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
+          <div className="bg-primary p-1 text-light">Manage Products</div>
+        </Link>
       </div>
     </div>
   );
