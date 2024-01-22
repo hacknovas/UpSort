@@ -31,6 +31,13 @@ export default function page() {
     }
   };
 
+  useEffect(() => {
+    if (document.cookie.split("=")[0] == "Token") {
+      // console.log(document.cookie.split("=")[1]);
+      redirect("/addProduct");
+    }
+  }, []);
+
   return (
     <div className="container d-flex justify-content-center align-items-center flex-column ">
       <div className="mb-3 row">

@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import verifyToken from "./utils/verify";
+import { jwtVerify } from "jose";
 
-export function middleware(req: NextRequest, res: NextResponse) {
-  const jwt = require("jsonwebtoken");
+export async function middleware(req: NextRequest, res: NextResponse) {
   try {
     const data = cookies().get("Token");
 
-    const decode = verifyToken(data?.value);
-    console.log(decode);
+    jwtVerify(
+      JSON.stringify(data),
+      new TextEncoder().encode(process.env.NEXT_PUBLIC_SECRET_KEY)
+    );
 
     return NextResponse.next();
   } catch (error) {
