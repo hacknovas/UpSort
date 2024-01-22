@@ -38,7 +38,7 @@ export default function Main() {
   const [searchActivate, setSearchActivate] = useState(false);
 
   async function handleToggle(Id: Number) {
-    const response: any = await axios.post("api/getProducts", Id, {
+    const response: any = await axios.post("api/manageProduct", Id, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -53,7 +53,7 @@ export default function Main() {
   }
 
   const handleRequest = async () => {
-    const response: any = await axios.get("api/getProducts");
+    const response: any = await axios.get("api/manageProduct");
 
     // const data= await JSON.stringify(response.data.reslut)
     console.log(response.data.result);
@@ -85,7 +85,7 @@ export default function Main() {
 
   const handleDelete = async (id: String) => {
     try {
-      const response: any = await axios.delete(`api/deleteProduct?data=${id}`);
+      const response: any = await axios.delete(`api/manageProduct?data=${id}`);
 
       handleRequest();
     } catch (error) {
